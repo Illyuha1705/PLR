@@ -1,6 +1,18 @@
 <div class="page-wrapper">
   <button
     ul-button
-    btnType="primary"
+    btnType="secondary"
+    [disabled]="isUsersShortInfo()"
     (click)="getUsers()">Get Users</button>
+
+  <ng-template [ngIf]="isUsersShortInfo()">
+    <ul class="users-list">
+      <li
+        *ngFor="let userShortInfo of usersShortInfo"
+        class="users-list__user">
+        <h4 class="user-name">{{userShortInfo.name}}</h4>
+        <span class="user-email">{{userShortInfo.email}}</span>
+      </li>
+    </ul>
+  </ng-template>
 </div>
