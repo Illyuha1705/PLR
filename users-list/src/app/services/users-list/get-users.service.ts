@@ -5,11 +5,10 @@ import { UserInterface }  from '../../interfaces/user.interface';
 import { catchError }    from 'rxjs/operators';
 
 @Injectable()
-export class getUsersService {
+export class GetUsersService {
   private url = 'https://jsonplaceholder.typicode.com/users';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getUsers(): Observable<UserInterface[]> {
     return this.http.get<UserInterface[]>(this.url)
