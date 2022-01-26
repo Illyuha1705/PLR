@@ -1,0 +1,20 @@
+<div class="card-body">
+  <div class="card-header">
+    <div class="title-container">
+      <span class="header-title">{{user?.name}}</span>
+    </div>
+
+    <button
+      ul-button
+      btnType="primary"
+      (click)="closeCard()"
+    >Close</button>
+  </div>
+
+  <div class="card-content">
+    <p class="card-info">{{user?.username}}</p>
+    <p class="card-info">{{user?.email}}</p>
+    <p class="card-info">{{user?.phone}}</p>
+    <p class="card-info">{{user?.website}}</p>
+  </div>
+</div>

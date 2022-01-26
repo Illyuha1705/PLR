@@ -5,11 +5,12 @@ import { GetUsersService }    from '../../services/users-list/get-users.service'
 import { HttpClientModule }   from '@angular/common/http';
 import { UsersService }       from '../../services/users-list/users.service';
 import { BrowserModule }      from '@angular/platform-browser';
+import { CardComponent }      from '../card/card.component';
 
 @NgModule({
-  declarations: [UsersListComponent, ButtonComponent],
+  declarations: [UsersListComponent, ButtonComponent, CardComponent],
   imports: [HttpClientModule, BrowserModule],
-  exports: [UsersListComponent, ButtonComponent],
+  exports: [UsersListComponent, ButtonComponent,CardComponent],
   providers: [GetUsersService, UsersService]
 })
 export class UsersListModule {}

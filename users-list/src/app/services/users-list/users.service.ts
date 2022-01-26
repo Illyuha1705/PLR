@@ -26,6 +26,7 @@ export class UsersService {
   private setUsersShotInfo(): void {
     this.users.forEach((user: UserInterface) => {
       this.usersShortInfo.push({
+        id: user.id,
         name: user.name,
         email: user.email
       });

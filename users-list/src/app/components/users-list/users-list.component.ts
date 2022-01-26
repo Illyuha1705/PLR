@@ -11,6 +11,7 @@ import { UserShotInfoInterface } from '../../interfaces/user-shot-info.interface
 })
 export class UsersListComponent implements OnInit{
   usersShortInfo: UserShotInfoInterface[] = [];
+  user: UserInterface | undefined;
 
   constructor(private getUsersService: GetUsersService,
               private usersService: UsersService) {}
@@ -30,6 +31,18 @@ export class UsersListComponent implements OnInit{
 
   isUsersShortInfo(): boolean {
     return this.usersShortInfo.length > 0;
+  }
+
+  checkIsUserChosen(): boolean {
+    return this.user !== undefined;
+  }
+
+  userChosen(id: number): void {
+    this.user = this.usersService.Users.find(user => user.id === id);
+  }
+
+  closeCard(): void {
+    this.user = undefined;
   }
 
   private checkForUsersData(): void {

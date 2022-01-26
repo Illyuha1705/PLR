@@ -9,10 +9,17 @@
     <ul class="users-list">
       <li
         *ngFor="let userShortInfo of usersShortInfo"
-        class="users-list__user">
+        class="users-list__user"
+        (click)="userChosen(userShortInfo.id)">
         <h4 class="user-name">{{userShortInfo.name}}</h4>
         <span class="user-email">{{userShortInfo.email}}</span>
       </li>
     </ul>
   </ng-template>
+
+  <app-card
+    *ngIf="checkIsUserChosen()"
+    [user]="user"
+    (closeButtonWasClicked$)="closeCard()"
+  ></app-card>
 </div>
