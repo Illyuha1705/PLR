@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUsersService }   from '../../services/users-list/get-users.service';
-import { UserInterface }         from '../../interfaces/user.interface';
-import { UsersService }          from '../../services/users-list/users.service';
+import { GetUsersService } from '../../services/users-list/get-users.service';
+import { UserInterface } from '../../interfaces/user.interface';
+import { UsersService } from '../../services/users-list/users.service';
 import { UserShotInfoInterface } from '../../interfaces/user-shot-info.interface';
 
 @Component({
@@ -9,12 +9,13 @@ import { UserShotInfoInterface } from '../../interfaces/user-shot-info.interface
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss']
 })
-export class UsersListComponent implements OnInit{
+export class UsersListComponent implements OnInit {
   usersShortInfo: UserShotInfoInterface[] = [];
   user: UserInterface | undefined;
 
   constructor(private getUsersService: GetUsersService,
-              private usersService: UsersService) {}
+              private usersService: UsersService) {
+  }
 
   ngOnInit(): void {
     this.checkForUsersData();

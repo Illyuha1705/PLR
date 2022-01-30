@@ -1,13 +1,13 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
-import { ButtonType }                                       from '../../interfaces/button.interface';
+import { ButtonType } from '../../../../../../src/app/interfaces/button.interface';
 
 @Component({
-  selector: 'button[ul-button]',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  selector: 'button[gc-button]',
+  templateUrl: './atom-button.component.html',
+  styleUrls: ['./atom-button.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ButtonComponent {
+export class AtomButtonComponent {
   @Input() btnType: ButtonType = 'primary';
   @Input() ariaLabel: string | undefined;
 

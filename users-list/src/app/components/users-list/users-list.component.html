@@ -1,6 +1,6 @@
 <div class="page-wrapper">
   <button
-    ul-button
+    gc-button
     btnType="secondary"
     [disabled]="isUsersShortInfo()"
     (click)="getUsers()">Get Users</button>
@@ -17,9 +17,9 @@
     </ul>
   </ng-template>
 
-  <app-card
+  <gc-card
     *ngIf="checkIsUserChosen()"
     [user]="user"
     (closeButtonWasClicked$)="closeCard()"
-  ></app-card>
+  ></gc-card>
 </div>
