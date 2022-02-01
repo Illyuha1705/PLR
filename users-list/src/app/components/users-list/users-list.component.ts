@@ -13,9 +13,10 @@ export class UsersListComponent implements OnInit {
   usersShortInfo: UserShotInfoInterface[] = [];
   user: UserInterface | undefined;
 
-  constructor(private getUsersService: GetUsersService,
-              private usersService: UsersService) {
-  }
+  constructor(
+    private getUsersService: GetUsersService,
+    private usersService: UsersService
+  ) {}
 
   ngOnInit(): void {
     this.checkForUsersData();
@@ -26,7 +27,7 @@ export class UsersListComponent implements OnInit {
       next: (users: UserInterface[]) => {
         this.usersService.setUsers(users);
       },
-      error: err => console.log(err)
+      error: (err) => console.log(err)
     });
   }
 
@@ -39,7 +40,7 @@ export class UsersListComponent implements OnInit {
   }
 
   userChosen(id: number): void {
-    this.user = this.usersService.Users.find(user => user.id === id);
+    this.user = this.usersService.Users.find((user) => user.id === id);
   }
 
   closeCard(): void {
@@ -49,7 +50,7 @@ export class UsersListComponent implements OnInit {
   private checkForUsersData(): void {
     this.usersService.usersChanged$.subscribe({
       next: () => this.getUsersShotInfo()
-    })
+    });
   }
 
   private getUsersShotInfo(): void {
