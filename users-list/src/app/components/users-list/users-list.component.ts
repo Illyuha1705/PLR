@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetUsersService } from '../../services/users-list/get-users.service';
-import { UserInterface } from '../../interfaces/user.interface';
+import { UserInterface, UserShotInfoInterface } from '../../interfaces/user.interface';
 import { UsersService } from '../../services/users-list/users.service';
-import { UserShotInfoInterface } from '../../interfaces/user-shot-info.interface';
 
 @Component({
   selector: 'app-users-list',
