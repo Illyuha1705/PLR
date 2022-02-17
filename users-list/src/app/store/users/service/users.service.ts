@@ -35,8 +35,8 @@ export class UsersService {
   }
 
   private setUsersList(users: UserInterface[]): void {
+    this.selectedUsersStore.update({ usersList: users });
     this.selectedUsersStore.set({ usersList: users });
-    console.log(this.selectedUsersStore.getValue());
   }
 
   private handleError<T>(
@@ -44,7 +44,7 @@ export class UsersService {
     result?: T
   ): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
-      console.log(error);
+      console.error(error);
 
       return of(result as T);
     };

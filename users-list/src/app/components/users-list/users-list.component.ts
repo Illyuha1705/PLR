@@ -27,8 +27,27 @@ export class UsersListComponent implements OnInit {
     this.usersService.getUsers();
   }
 
+  checkIsUsersListOnStore(): boolean {
+    return this.usersQuery.hasEntity();
+  }
+
+  closeCard(): void {
+    this.usersStore.update({ selectedUser: null });
+    this.setSelectedUser();
+  }
+
+  chooseUser(userId: string): void {
+    const user = this.usersList.find((user) => user.id === userId);
+    this.usersStore.update({ selectedUser: user });
+    this.setSelectedUser();
+  }
+
+  checkIsUserChosen(): boolean {
+    return !!this.usersQuery.getValue().selectedUser;
+  }
+
   private setUsersList(): void {
-    this.usersList = this.usersQuery.getEntity('usersList') as UserInterface[];
+    this.usersList = this.usersQuery.getValue().usersList;
   }
 
   private checkIsUsersListChanged(): void {
@@ -37,25 +56,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  checkIsUsersListOnStore(): boolean {
-    return this.usersQuery.hasEntity();
-  }
-
-  closeCard(): void {}
-
-  chooseUser(userId: string): void {
-    const user = this.usersList.find((user) => user.id === userId);
-    this.usersStore.set({ selectedUser: user });
-    this.setSelectedUser();
-  }
-
-  checkIsUserChosen(): boolean {
-    return this.usersQuery.hasEntity('selectedUser');
-  }
-
   private setSelectedUser(): void {
-    this.selectedUser = this.usersQuery.getEntity(
-      'selectedUser'
-    ) as UserInterface;
+    this.selectedUser = this.usersStore.getValue().selectedUser;
   }
 }
