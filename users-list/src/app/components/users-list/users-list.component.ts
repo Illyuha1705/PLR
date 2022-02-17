@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInterface, UserShotInfoInterface } from '../../interfaces/user.interface';
+import { UsersService } from '../../store/users/service/users.service';
+import { UsersQuery } from '../../store/users/query/users.query';
+import { UserInterface } from '../../interfaces/user.interface';
+import { UsersStore } from '../../store/users/store/users.store';
 
 @Component({
   selector: 'app-users-list',
@@ -7,21 +10,52 @@ import { UserInterface, UserShotInfoInterface } from '../../interfaces/user.inte
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  usersShortInfo: UserShotInfoInterface[] = [];
-  user: UserInterface | undefined;
+  usersList: UserInterface[] = [];
+  selectedUser: UserInterface = {} as UserInterface;
+
+  constructor(
+    private usersService: UsersService,
+    private usersQuery: UsersQuery,
+    private usersStore: UsersStore
+  ) {}
 
   ngOnInit(): void {
+    this.checkIsUsersListChanged();
   }
 
-  isUsersShortInfo(): boolean {
-    return this.usersShortInfo.length > 0;
+  getUsers(): void {
+    this.usersService.getUsers();
+  }
+
+  private setUsersList(): void {
+    this.usersList = this.usersQuery.getEntity('usersList') as UserInterface[];
+  }
+
+  private checkIsUsersListChanged(): void {
+    this.usersService.usersListWasUpdated$.subscribe({
+      next: () => this.setUsersList()
+    });
+  }
+
+  checkIsUsersListOnStore(): boolean {
+    return this.usersQuery.hasEntity();
+  }
+
+  closeCard(): void {}
+
+  chooseUser(userId: string): void {
+    const user = this.usersList.find((user) => user.id === userId);
+    this.usersStore.set({ selectedUser: user });
+    this.setSelectedUser();
   }
 
   checkIsUserChosen(): boolean {
-    return this.user !== undefined;
+    return this.usersQuery.hasEntity('selectedUser');
   }
 
-  closeCard(): void {
-    this.user = undefined;
+  private setSelectedUser(): void {
+    this.selectedUser = this.usersQuery.getEntity(
+      'selectedUser'
+    ) as UserInterface;
   }
 }

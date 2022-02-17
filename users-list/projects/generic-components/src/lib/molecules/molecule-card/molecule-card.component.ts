@@ -3,13 +3,14 @@ import { UserInterface } from '../../../../../../src/app/interfaces/user.interfa
 import { Subject } from 'rxjs';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'gc-card',
   templateUrl: './molecule-card.component.html',
   styleUrls: ['./molecule-card.component.scss']
 })
 export class MoleculeCardComponent {
   @Output() closeButtonWasClicked$: Subject<void> = new Subject<void>();
-  @Input() user: UserInterface | undefined;
+  @Input() user: UserInterface;
 
   closeCard(): void {
     this.closeButtonWasClicked$.next();

@@ -2,24 +2,24 @@
   <button
     gc-button
     btnType="secondary"
-    [disabled]="isUsersShortInfo()"
-    (click)="getUsers()">Get Users</button>
+    (click)="getUsers()"
+  >Get Users</button>
 
-  <ng-template [ngIf]="isUsersShortInfo()">
+  <ng-template [ngIf]="checkIsUsersListOnStore()">
     <ul class="users-list">
       <li
-        *ngFor="let userShortInfo of usersShortInfo"
-        class="users-list__user"
-        (click)="userChosen(userShortInfo.id)">
-        <h4 class="user-name">{{userShortInfo.name}}</h4>
-        <span class="user-email">{{userShortInfo.email}}</span>
+        *ngFor="let user of usersList"
+        (click)="chooseUser(user.id)"
+        class="users-list__user">
+        <h4 class="user-name">{{user.name}}</h4>
+        <span class="user-email">{{user.email}}</span>
       </li>
     </ul>
   </ng-template>
 
   <gc-card
     *ngIf="checkIsUserChosen()"
-    [user]="user"
+    [user]="selectedUser"
     (closeButtonWasClicked$)="closeCard()"
   ></gc-card>
 </div>

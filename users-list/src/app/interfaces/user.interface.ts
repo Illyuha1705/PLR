@@ -1,5 +1,5 @@
 export interface UserInterface {
-  id: number;
+  id: string;
   name: string;
   username: string;
   email: string;
@@ -8,7 +8,7 @@ export interface UserInterface {
 }
 
 export interface UserShotInfoInterface {
-  id: number;
+  id: string;
   name: string;
   email: string;
 }

@@ -1,20 +1,26 @@
-<div class="card-body">
-  <div class="card-header">
-    <div class="title-container">
-      <span class="header-title">{{user?.name}}</span>
+<div class="card" *ngIf="user; else NoUser">
+  <div class="card-body">
+    <div class="card-header">
+      <div class="title-container">
+        <span class="header-title">{{user.name}}</span>
+      </div>
+
+      <button
+        gc-button
+        btnType="primary"
+        (click)="closeCard()"
+      >Close</button>
     </div>
 
-    <button
-      gc-button
-      btnType="primary"
-      (click)="closeCard()"
-    >Close</button>
-  </div>
-
-  <div class="card-content">
-    <p class="card-info">{{user?.username}}</p>
-    <p class="card-info">{{user?.email}}</p>
-    <p class="card-info">{{user?.phone}}</p>
-    <p class="card-info">{{user?.website}}</p>
+    <div class="card-content">
+      <p class="card-info">{{user.username}}</p>
+      <p class="card-info">{{user.email}}</p>
+      <p class="card-info">{{user.phone}}</p>
+      <p class="card-info">{{user.website}}</p>
+    </div>
   </div>
 </div>
+
+<ng-template #NoUser>
+  <span>No user</span>
+</ng-template>
