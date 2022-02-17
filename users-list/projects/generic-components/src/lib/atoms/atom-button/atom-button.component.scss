@@ -67,8 +67,7 @@ $btn_secondary_font_color_base: white;
   }
 
   &:disabled,
-  &[disabled],
-  &[aria-disabled='true'] {
+  &[disabled] {
     background-color: $btn_base_bg_color_disabled;
     color: $btn_base_font_color_disabled;
   }
@@ -87,8 +86,7 @@ $btn_secondary_font_color_base: white;
   }
 
   &:disabled,
-  &[disabled],
-  &[aria-disabled='true'] {
+  &[disabled] {
     background-color: $btn_base_bg_color_disabled;
     color: $btn_base_font_color_disabled;
   }

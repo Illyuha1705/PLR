@@ -1,25 +1,27 @@
-<div class="page-wrapper">
-  <button
-    gc-button
-    btnType="secondary"
-    (click)="getUsers()"
-  >Get Users</button>
+<div class="users">
+  <div class="users-wrapper">
+    <button
+      gc-button
+      btnType="secondary"
+      (click)="getUsers()"
+    >Get Users</button>
 
-  <ng-template [ngIf]="checkIsUsersListOnStore()">
-    <ul class="users-list">
-      <li
-        *ngFor="let user of usersList"
-        (click)="chooseUser(user.id)"
-        class="users-list__user">
-        <h4 class="user-name">{{user.name}}</h4>
-        <span class="user-email">{{user.email}}</span>
-      </li>
-    </ul>
-  </ng-template>
+    <ng-template [ngIf]="checkIsUsersListOnStore()">
+      <ul class="users-list">
+        <li
+          *ngFor="let user of usersList"
+          (click)="chooseUser(user.id)"
+          class="users-list__user">
+          <h4 class="user-name">{{user.name}}</h4>
+          <span class="user-email">{{user.email}}</span>
+        </li>
+      </ul>
+    </ng-template>
 
-  <gc-card
-    *ngIf="checkIsUserChosen()"
-    [user]="selectedUser"
-    (closeButtonWasClicked$)="closeCard()"
-  ></gc-card>
+    <gc-card
+      *ngIf="checkIsUserChosen()"
+      [user]="selectedUser"
+      (closeButtonWasClicked$)="closeCard()"
+    ></gc-card>
+  </div>
 </div>
