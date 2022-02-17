@@ -1,12 +1,15 @@
+$users_list_color_grey: hsl(204, 8%, 76%);
+$users_list_user_hover_background_color: hsl(180, 100%, 94%);
+
 .users-list {
   margin: 25px 0;
   width: 300px;
-  box-shadow: 1px 0 0 gray,  -1px 0 0 grey;
+  box-shadow: 1px 0 0 $users_list_color_grey,  -1px 0 0 $users_list_color_grey;
 }
 
 .users-list__user {
   font-size: 16px;
-  border-bottom: 1px solid lightslategrey;
+  border-bottom: 1px solid $users_list_color_grey;
   height: 48px;
   width: 100%;
   padding: 5px 10px;
@@ -14,12 +17,11 @@
   cursor: pointer;
 
   &:first-child {
-    border-top: 1px solid lightslategrey;
+    border-top: 1px solid $users_list_color_grey;
   }
 
-  &:hover,
-  &:focus {
-    background-color: lightcyan;
+  &:hover {
+    background-color: $users_list_user_hover_background_color;
     text-shadow: 0 0 0.5px;
     outline: none;
   }

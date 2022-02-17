@@ -4,22 +4,22 @@ $btn_base_border: 1px solid transparent;
 $btn_base_font_size: 14px;
 $btn_base_padding_vertical: 7px;
 $btn_base_padding_horizontal: 15px;
-$btn_base_bg_color_disabled: grey;
-$btn_base_font_color_disabled: darkgrey;
+$btn_base_bg_color_disabled: hsl(204, 8%, 76%);
+$btn_base_font_color_disabled: hsl(211, 12%, 48%);
 
 // Primary button
-$btn_primary_bg_color_base: blue;
-$btn_primary_bg_color_hover: darkblue;
-$btn_primary_bg_color_focus: blue;
-$btn_primary_bg_color_active: lightblue;
-$btn_primary_font_color_base: white;
+$btn_primary_bg_color_base: hsl(235, 100%, 46%);
+$btn_primary_bg_color_hover: hsl(239, 92%, 29%);
+$btn_primary_bg_color_focus: hsl(235, 100%, 46%);
+$btn_primary_bg_color_active: hsl(203, 100%, 56%);
+$btn_primary_font_color_base: hsl(0, 100%, 100%);
 
 // Secondary button
-$btn_secondary_bg_color_base: green;
-$btn_secondary_bg_color_hover: darkgreen;
-$btn_secondary_bg_color_focus: green;
-$btn_secondary_bg_color_active: lightgreen;
-$btn_secondary_font_color_base: white;
+$btn_secondary_bg_color_base: hsl(126, 92%, 29%);
+$btn_secondary_bg_color_hover: hsl(126, 92%, 19%);
+$btn_secondary_bg_color_focus: hsl(126, 92%, 29%);
+$btn_secondary_bg_color_active: hsl(126, 62%, 48%);
+$btn_secondary_font_color_base: hsl(0, 100%, 100%);
 
 .ul-btn {
   border: $btn_base_border;
