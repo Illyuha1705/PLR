@@ -40,8 +40,10 @@ export class UsersService implements OnDestroy {
   }
 
   private setUsersList(users: UserInterface[]): void {
-    this.selectedUsersStore.update({ usersList: users });
-    this.selectedUsersStore.set({ usersList: users });
+    if (users.length > 0) {
+      this.selectedUsersStore.update({ usersList: users });
+      this.selectedUsersStore.set({ usersList: users });
+    }
   }
 
   private handleError<T>(

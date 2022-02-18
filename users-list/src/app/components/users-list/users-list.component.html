@@ -3,6 +3,7 @@
     <button
       gc-button
       btnType="secondary"
+      [disabled]="checkIsUsersListOnStore()"
       (click)="getUsers()"
     >{{ 'USERS.BUTTON' | translate }}</button>
 
