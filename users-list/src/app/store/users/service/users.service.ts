@@ -1,16 +1,18 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { EventEmitter, Injectable, OnDestroy, Output } from '@angular/core';
 import { UsersStore } from '../store/users.store';
 import { UsersQuery } from '../query/users.query';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { UserInterface } from '../../../interfaces/user.interface';
 import { API_USERS } from '../../../constants/api.constants';
-import { catchError } from 'rxjs/operators';
+import { catchError, takeUntil } from 'rxjs/operators';
 
 @Injectable()
-export class UsersService {
+export class UsersService implements OnDestroy {
   @Output() usersListWasUpdated$: EventEmitter<UserInterface[]> =
     new EventEmitter<UserInterface[]>();
+
+  private destroy$: Subject<boolean> = new Subject();
 
   constructor(
     private selectedUsersStore: UsersStore,
@@ -21,7 +23,10 @@ export class UsersService {
   getUsers(): void {
     this.httpClient
       .get<UserInterface[]>(API_USERS)
-      .pipe(catchError(this.handleError<UserInterface[]>('getUsers', [])))
+      .pipe(
+        catchError(this.handleError<UserInterface[]>('getUsers', [])),
+        takeUntil(this.destroy$)
+      )
       .subscribe({
         next: (users: UserInterface[]) => {
           this.setUsersList(users);
@@ -30,7 +35,7 @@ export class UsersService {
       });
   }
 
-  updateSelectedUser(user: UserInterface) {
+  updateSelectedUser(user: UserInterface): void {
     this.selectedUsersStore.update({ selectedUser: user });
   }
 
@@ -48,5 +53,10 @@ export class UsersService {
 
       return of(result as T);
     };
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }
