@@ -6,6 +6,7 @@ import { UsersStoreModule } from '../../store/users/users-store.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [UsersListComponent],
@@ -15,7 +16,8 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     AtomButtonModule,
     MoleculeCardModule,
-    UsersStoreModule
+    UsersStoreModule,
+    TranslateModule
   ],
   exports: [UsersListComponent],
   providers: []

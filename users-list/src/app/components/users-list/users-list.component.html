@@ -4,7 +4,7 @@
       gc-button
       btnType="secondary"
       (click)="getUsers()"
-    >Get Users</button>
+    >{{ 'USERS.BUTTON' | translate }}</button>
 
     <ng-template [ngIf]="checkIsUsersListOnStore()">
       <ul class="users-list">

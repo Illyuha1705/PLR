@@ -1,0 +1,9 @@
+{
+  "USERS": {
+    "BUTTON": "Get Users"
+  },
+  "CARD": {
+    "BUTTON": "Close",
+    "NO_USER": "No user"
+  }
+}
